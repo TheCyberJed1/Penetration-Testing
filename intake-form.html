@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Intake Form – CyberJed Security</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0e1a; color: #e0e6f0; }
+    .page { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 40px; padding-bottom: 16px; border-bottom: 1px solid #1e2d40;
+    }
+    nav .brand { font-size: 1.2rem; color: #00c8ff; font-weight: 700; letter-spacing: 2px; }
+    nav .links a { color: #aac4d8; text-decoration: none; font-size: 0.82rem; margin-left: 20px; }
+    .hero { text-align: center; margin-bottom: 40px; }
+    .hero h1 { font-size: 2rem; color: #00c8ff; margin-bottom: 10px; }
+    .hero p { font-size: 0.9rem; color: #8899aa; max-width: 560px; margin: 0 auto; line-height: 1.7; }
+    /* Form card */
+    .form-card {
+      background: #111827;
+      border: 1px solid #1e2d40;
+      border-radius: 12px;
+      padding: 32px;
+    }
+    fieldset {
+      border: none;
+      margin-bottom: 28px;
+    }
+    legend {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #00c8ff;
+      border-left: 4px solid #00c8ff;
+      padding-left: 10px;
+      margin-bottom: 16px;
+      display: block;
+      width: 100%;
+    }
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .field-row.full { grid-template-columns: 1fr; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    label {
+      font-size: 0.78rem;
+      color: #8899aa;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    label span.req { color: #ff4444; margin-left: 2px; }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="url"],
+    select,
+    textarea {
+      background: #0d1520;
+      border: 1px solid #1e2d40;
+      border-radius: 6px;
+      color: #e0e6f0;
+      font-size: 0.88rem;
+      padding: 10px 12px;
+      outline: none;
+      width: 100%;
+      font-family: inherit;
+    }
+    input:focus, select:focus, textarea:focus { border-color: #00c8ff; }
+    textarea { resize: vertical; min-height: 90px; }
+    select option { background: #111827; }
+    /* Checkbox group */
+    .check-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 8px;
+    }
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      color: #c8d8e8;
+      cursor: pointer;
+    }
+    .check-item input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #00c8ff;
+      cursor: pointer;
+    }
+    /* Privacy note */
+    .privacy {
+      background: #0d1520;
+      border: 1px solid #1e2d40;
+      border-radius: 6px;
+      padding: 12px 16px;
+      font-size: 0.78rem;
+      color: #8899aa;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+    .privacy a { color: #00c8ff; }
+    /* Submit */
+    .submit-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    button[type="submit"] {
+      background: #00c8ff;
+      color: #0a0e1a;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 32px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    button[type="submit"]:hover { background: #00b0e0; }
+    .submit-note { font-size: 0.78rem; color: #556677; }
+    /* divider */
+    hr { border: none; border-top: 1px solid #1e2d40; margin: 6px 0 20px; }
+    footer { margin-top: 40px; text-align: center; font-size: 0.78rem; color: #556677; border-top: 1px solid #1e2d40; padding-top: 16px; }
+    @media(max-width:600px){ .field-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav>
+    <span class="brand">🛡 CyberJed Security</span>
+    <div class="links">
+      <a href="capability-statement.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="methodology.html">Methodology</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Client Intake Form</h1>
+    <p>
+      Fill out this form to request an assessment. We will follow up within one business day
+      to schedule a free 30-minute scoping call. No commitment required.
+    </p>
+  </div>
+
+  <div class="form-card">
+    <form action="#" method="POST" novalidate>
+
+      <!-- SECTION 1: Contact Info -->
+      <fieldset>
+        <legend>1. Contact Information</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="fname">First Name <span class="req">*</span></label>
+            <input type="text" id="fname" name="first_name" placeholder="Jane" required />
+          </div>
+          <div class="field">
+            <label for="lname">Last Name <span class="req">*</span></label>
+            <input type="text" id="lname" name="last_name" placeholder="Smith" required />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="email">Business Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="jane@company.com" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="jobtitle">Job Title <span class="req">*</span></label>
+            <input type="text" id="jobtitle" name="job_title" placeholder="IT Director" required />
+          </div>
+          <div class="field">
+            <label for="company">Company / Organization <span class="req">*</span></label>
+            <input type="text" id="company" name="company" placeholder="Acme Corp" required />
+          </div>
+        </div>
+        <div class="field-row full">
+          <div class="field">
+            <label for="website">Company Website</label>
+            <input type="url" id="website" name="website" placeholder="https://www.company.com" />
+          </div>
+        </div>
+      </fieldset>
+
+      <hr />
+
+      <!-- SECTION 2: Company Profile -->
+      <fieldset>
+        <legend>2. Organization Profile</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="industry">Industry <span class="req">*</span></label>
+            <select id="industry" name="industry" required>
+              <option value="" disabled selected>Select industry…</option>
+              <option>Healthcare</option>
+              <option>Financial Services / Fintech</option>
+              <option>Legal / Law Firm</option>
+              <option>E-Commerce / Retail</option>
+              <option>Technology / SaaS</option>
+              <option>Government / Defense</option>
+              <option>Education</option>
+              <option>Nonprofit</option>
+              <option>Manufacturing</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="employees">Number of Employees</label>
+            <select id="employees" name="employees">
+              <option value="" disabled selected>Select range…</option>
+              <option>1–10</option>
+              <option>11–50</option>
+              <option>51–250</option>
+              <option>251–1,000</option>
+              <option>1,000+</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="compliance">Regulatory Requirements</label>
+            <select id="compliance" name="compliance">
+              <option value="" disabled selected>Select if applicable…</option>
+              <option>HIPAA</option>
+              <option>PCI-DSS</option>
+              <option>SOC 2</option>
+              <option>ISO 27001</option>
+              <option>CMMC / NIST 800-171</option>
+              <option>FERPA</option>
+              <option>GDPR</option>
+              <option>None / Unsure</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="budget">Estimated Budget Range</label>
+            <select id="budget" name="budget">
+              <option value="" disabled selected>Select range…</option>
+              <option>Under $2,500</option>
+              <option>$2,500 – $5,000</option>
+              <option>$5,000 – $15,000</option>
+              <option>$15,000 – $50,000</option>
+              <option>$50,000+</option>
+              <option>Unknown / Need Guidance</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <hr />
+
+      <!-- SECTION 3: Services Requested -->
+      <fieldset>
+        <legend>3. Services of Interest</legend>
+        <div class="check-group">
+          <label class="check-item">
+            <input type="checkbox" name="services[]" value="external_pentest" />
+            External Network Pentest
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="services[]" value="internal_pentest" />
+            Internal Network Pentest
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="services[]" value="webapp_pentest" />
+            Web Application Pentest
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="services[]" value="api_testing" />
+            API Security Testing
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="services[]" value="social_engineering" />
+            Social Engineering / Phishing
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="services[]" value="ad_audit" />
+            Active Directory Audit
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="services[]" value="cloud_review" />
+            Cloud Security Review
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="services[]" value="vuln_assessment" />
+            Vulnerability Assessment
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="services[]" value="awareness_training" />
+            Security Awareness Training
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="services[]" value="unsure" />
+            Not sure — need guidance
+          </label>
+        </div>
+      </fieldset>
+
+      <hr />
+
+      <!-- SECTION 4: Scope Details -->
+      <fieldset>
+        <legend>4. Scope Details (Approximate)</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="ip_count">Number of IP Addresses / Hosts</label>
+            <input type="text" id="ip_count" name="ip_count" placeholder="e.g., 20 internal, 5 external" />
+          </div>
+          <div class="field">
+            <label for="app_count">Number of Web Applications / APIs</label>
+            <input type="text" id="app_count" name="app_count" placeholder="e.g., 3 web apps, 1 API" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="cloud_env">Cloud Environment</label>
+            <select id="cloud_env" name="cloud_env">
+              <option value="">N/A</option>
+              <option>AWS</option>
+              <option>Azure</option>
+              <option>Google Cloud</option>
+              <option>Multiple Clouds</option>
+              <option>On-Premises Only</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="timeline">Desired Start Timeline</label>
+            <select id="timeline" name="timeline">
+              <option value="" disabled selected>Select…</option>
+              <option>ASAP (within 2 weeks)</option>
+              <option>1 month</option>
+              <option>2–3 months</option>
+              <option>Flexible</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row full">
+          <div class="field">
+            <label for="notes">Additional Context / Special Requirements</label>
+            <textarea id="notes" name="notes" placeholder="Describe your environment, any known concerns, compliance deadlines, or questions you have for us…"></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <hr />
+
+      <!-- SECTION 5: How did you hear -->
+      <fieldset>
+        <legend>5. How Did You Hear About Us?</legend>
+        <div class="field-row full">
+          <div class="field">
+            <label for="referral">Source</label>
+            <select id="referral" name="referral">
+              <option value="" disabled selected>Select…</option>
+              <option>LinkedIn</option>
+              <option>Referral / Word of Mouth</option>
+              <option>Google / Web Search</option>
+              <option>GitHub</option>
+              <option>Conference / Event</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <hr />
+
+      <!-- Privacy + Submit -->
+      <div class="privacy">
+        🔒 Your information is kept strictly confidential and is never sold or shared with third parties.
+        By submitting this form, you agree to our
+        <a href="#">Privacy Policy</a>. We will contact you within one business day.
+      </div>
+
+      <div class="submit-row">
+        <button type="submit">Submit Request →</button>
+        <span class="submit-note">No commitment required. We'll send a calendar link for a free scoping call.</span>
+      </div>
+
+    </form>
+  </div>
+
+  <footer>
+    <p>© 2025 CyberJed Security LLC — All Rights Reserved</p>
+  </footer>
+
+</div>
+</body>
+</html>
