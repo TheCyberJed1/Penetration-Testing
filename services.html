@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services – CyberJed Security</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #0a0e1a;
+      color: #e0e6f0;
+    }
+    .page { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 40px; padding-bottom: 16px; border-bottom: 1px solid #1e2d40;
+    }
+    nav .brand { font-size: 1.2rem; color: #00c8ff; font-weight: 700; letter-spacing: 2px; }
+    nav .links a { color: #aac4d8; text-decoration: none; font-size: 0.82rem; margin-left: 20px; }
+    nav .links a:hover { color: #00c8ff; }
+    .hero { text-align: center; margin-bottom: 48px; }
+    .hero h1 { font-size: 2rem; color: #00c8ff; margin-bottom: 10px; }
+    .hero p { font-size: 0.95rem; color: #8899aa; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+    /* Service cards */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .service-card {
+      background: #111827;
+      border: 1px solid #1e2d40;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-header {
+      background: #0d1520;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-bottom: 1px solid #1e2d40;
+    }
+    .service-icon { font-size: 2rem; flex-shrink: 0; }
+    .service-header h2 { font-size: 1rem; color: #00c8ff; }
+    .service-header p { font-size: 0.8rem; color: #8899aa; margin-top: 3px; }
+    .service-body { padding: 20px 24px; flex: 1; }
+    .service-body > p {
+      font-size: 0.87rem; color: #c8d8e8; line-height: 1.7; margin-bottom: 16px;
+    }
+    .deliverables-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #8899aa;
+      margin-bottom: 8px;
+    }
+    .deliverables {
+      list-style: none;
+      margin-bottom: 16px;
+    }
+    .deliverables li {
+      font-size: 0.83rem;
+      color: #aac4d8;
+      padding: 5px 0;
+      padding-left: 18px;
+      position: relative;
+      border-bottom: 1px solid #1a2535;
+    }
+    .deliverables li:last-child { border-bottom: none; }
+    .deliverables li::before { content: "✓"; position: absolute; left: 0; color: #00c8ff; font-weight: 700; }
+    .timeline-badge {
+      display: inline-block;
+      background: #0d1520;
+      border: 1px solid #1e2d40;
+      color: #aac4d8;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    /* Process section */
+    .process-steps {
+      display: flex;
+      gap: 0;
+      margin-bottom: 48px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    .step {
+      flex: 1;
+      background: #111827;
+      border-right: 1px solid #1e2d40;
+      padding: 20px 16px;
+      text-align: center;
+    }
+    .step:last-child { border-right: none; }
+    .step .snum {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #00c8ff;
+      opacity: 0.4;
+    }
+    .step h3 { font-size: 0.82rem; color: #00c8ff; margin: 6px 0 4px; }
+    .step p  { font-size: 0.76rem; color: #8899aa; line-height: 1.5; }
+    /* Add-ons */
+    .addons {
+      background: #111827;
+      border: 1px solid #1e2d40;
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 48px;
+    }
+    .addons h2 {
+      font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px;
+      color: #00c8ff; margin-bottom: 16px;
+    }
+    .addon-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .addon-item {
+      background: #0d1520;
+      border: 1px solid #1e2d40;
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 0.83rem;
+      color: #c8d8e8;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .addon-item span { color: #00c8ff; }
+    /* CTA */
+    .cta { text-align: center; padding: 32px; background: #111827; border: 1px solid #1e2d40; border-radius: 12px; }
+    .cta h2 { color: #00c8ff; margin-bottom: 10px; }
+    .cta p  { color: #8899aa; font-size: 0.9rem; margin-bottom: 20px; }
+    .cta a  { display: inline-block; background: #00c8ff; color: #0a0e1a; padding: 12px 28px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 0.9rem; }
+    footer { margin-top: 40px; text-align: center; font-size: 0.78rem; color: #556677; border-top: 1px solid #1e2d40; padding-top: 16px; }
+    @media(max-width:600px){ .service-grid { grid-template-columns: 1fr; } .process-steps { flex-direction: column; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav>
+    <span class="brand">🛡 CyberJed Security</span>
+    <div class="links">
+      <a href="capability-statement.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="intake-form.html">Get Started</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Our Services</h1>
+    <p>Every engagement is scoped to your environment, tailored to your risk profile,
+    and delivered with clear, actionable findings — not just a vulnerability list.</p>
+  </div>
+
+  <div class="service-grid">
+
+    <!-- 1. External Network Pentest -->
+    <div class="service-card">
+      <div class="service-header">
+        <div class="service-icon">🌐</div>
+        <div>
+          <h2>External Network Penetration Test</h2>
+          <p>Simulate an outside attacker targeting your internet-facing infrastructure</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <p>
+          We attack your publicly reachable systems — firewalls, VPNs, email gateways,
+          web servers — the same way a real adversary would, from outside your perimeter.
+        </p>
+        <p class="deliverables-label">Deliverables</p>
+        <ul class="deliverables">
+          <li>Executive summary (business-language findings)</li>
+          <li>Technical findings report with CVSS scores</li>
+          <li>Step-by-step reproduction evidence (screenshots, logs)</li>
+          <li>Prioritized remediation roadmap</li>
+          <li>Live debrief call (1 hour)</li>
+          <li>Complimentary re-test of Critical/High findings (within 30 days)</li>
+        </ul>
+        <span class="timeline-badge">⏱ Typical duration: 5–10 business days</span>
+      </div>
+    </div>
+
+    <!-- 2. Internal Network Pentest -->
+    <div class="service-card">
+      <div class="service-header">
+        <div class="service-icon">🏢</div>
+        <div>
+          <h2>Internal Network Penetration Test</h2>
+          <p>Simulate an attacker already inside your network (insider threat / compromised endpoint)</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <p>
+          Most breaches involve lateral movement after initial access. We simulate an
+          attacker on your internal network, testing for privilege escalation, lateral movement,
+          and path to domain compromise.
+        </p>
+        <p class="deliverables-label">Deliverables</p>
+        <ul class="deliverables">
+          <li>Full attack path narrative with screenshots</li>
+          <li>Active Directory attack path map</li>
+          <li>Privilege escalation findings with CVSS scores</li>
+          <li>Lateral movement simulation evidence</li>
+          <li>Prioritized remediation roadmap</li>
+          <li>Live debrief call (1 hour)</li>
+        </ul>
+        <span class="timeline-badge">⏱ Typical duration: 5–15 business days</span>
+      </div>
+    </div>
+
+    <!-- 3. Web Application Test -->
+    <div class="service-card">
+      <div class="service-header">
+        <div class="service-icon">🕸</div>
+        <div>
+          <h2>Web Application Penetration Test</h2>
+          <p>Thorough manual and automated testing of your web apps and APIs</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <p>
+          We manually test your web application for OWASP Top 10 vulnerabilities and beyond —
+          including authentication flaws, injection attacks, broken authorization,
+          and business logic abuse that automated scanners miss.
+        </p>
+        <p class="deliverables-label">Deliverables</p>
+        <ul class="deliverables">
+          <li>OWASP Top 10 coverage report</li>
+          <li>API endpoint inventory and findings</li>
+          <li>Authenticated and unauthenticated test results</li>
+          <li>Business logic flaw documentation</li>
+          <li>Developer-friendly remediation guidance</li>
+          <li>Live debrief call (1 hour)</li>
+        </ul>
+        <span class="timeline-badge">⏱ Typical duration: 3–7 business days</span>
+      </div>
+    </div>
+
+    <!-- 4. Social Engineering -->
+    <div class="service-card">
+      <div class="service-header">
+        <div class="service-icon">📧</div>
+        <div>
+          <h2>Social Engineering Assessment</h2>
+          <p>Test your employees' resistance to phishing and pretexting attacks</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <p>
+          The human element is the most consistently exploited attack vector.
+          We simulate realistic phishing campaigns, vishing calls, and pretexting scenarios
+          to measure your team's security awareness and identify training gaps.
+        </p>
+        <p class="deliverables-label">Deliverables</p>
+        <ul class="deliverables">
+          <li>Phishing campaign metrics (click rate, credential submission rate)</li>
+          <li>Department-level breakdown of results</li>
+          <li>Anonymized individual findings (no naming without consent)</li>
+          <li>Security awareness training recommendations</li>
+          <li>Repeat campaign option to measure improvement</li>
+        </ul>
+        <span class="timeline-badge">⏱ Typical duration: 2–5 business days</span>
+      </div>
+    </div>
+
+    <!-- 5. Vulnerability Assessment -->
+    <div class="service-card">
+      <div class="service-header">
+        <div class="service-icon">🔍</div>
+        <div>
+          <h2>Vulnerability Assessment</h2>
+          <p>Comprehensive scanning and risk ranking without active exploitation</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <p>
+          Not ready for a full penetration test? A vulnerability assessment gives you
+          a baseline view of your attack surface with risk-ranked findings and remediation
+          priorities — ideal for organizations beginning their security journey.
+        </p>
+        <p class="deliverables-label">Deliverables</p>
+        <ul class="deliverables">
+          <li>Authenticated scan results (internal and/or external)</li>
+          <li>Risk-ranked vulnerability report</li>
+          <li>False-positive validation by a human analyst</li>
+          <li>Remediation priority matrix</li>
+          <li>Executive summary for leadership</li>
+        </ul>
+        <span class="timeline-badge">⏱ Typical duration: 2–4 business days</span>
+      </div>
+    </div>
+
+    <!-- 6. Security Awareness Training -->
+    <div class="service-card">
+      <div class="service-header">
+        <div class="service-icon">🎓</div>
+        <div>
+          <h2>Security Awareness Training</h2>
+          <p>Empower your team to be the last line of defense</p>
+        </div>
+      </div>
+      <div class="service-body">
+        <p>
+          We deliver engaging, practical security awareness sessions tailored to your
+          industry and threat landscape — covering phishing recognition, password hygiene,
+          safe remote work practices, and incident reporting.
+        </p>
+        <p class="deliverables-label">Deliverables</p>
+        <ul class="deliverables">
+          <li>Live or recorded training session (up to 2 hours)</li>
+          <li>Custom slide deck aligned to your policies</li>
+          <li>Employee quiz and knowledge-check materials</li>
+          <li>Post-training summary report</li>
+          <li>Certificate of completion for attendees</li>
+        </ul>
+        <span class="timeline-badge">⏱ Typical duration: 1–3 business days</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Engagement Process -->
+  <h2 style="font-size:0.85rem;text-transform:uppercase;letter-spacing:3px;color:#00c8ff;border-left:4px solid #00c8ff;padding-left:10px;margin-bottom:20px;">
+    How an Engagement Works
+  </h2>
+  <div class="process-steps">
+    <div class="step">
+      <div class="snum">01</div>
+      <h3>Intake Form</h3>
+      <p>Submit our brief questionnaire so we can understand your needs.</p>
+    </div>
+    <div class="step">
+      <div class="snum">02</div>
+      <h3>Scoping Call</h3>
+      <p>30-minute call to define scope, timeline, and deliverables.</p>
+    </div>
+    <div class="step">
+      <div class="snum">03</div>
+      <h3>Proposal &amp; SOW</h3>
+      <p>You receive a flat-rate quote and signed engagement documents.</p>
+    </div>
+    <div class="step">
+      <div class="snum">04</div>
+      <h3>Testing</h3>
+      <p>We execute the assessment during agreed windows.</p>
+    </div>
+    <div class="step">
+      <div class="snum">05</div>
+      <h3>Report &amp; Debrief</h3>
+      <p>Written report + live walk-through with your team.</p>
+    </div>
+    <div class="step">
+      <div class="snum">06</div>
+      <h3>Re-Test</h3>
+      <p>Free re-test of Critical/High findings within 30 days.</p>
+    </div>
+  </div>
+
+  <!-- Add-ons -->
+  <div class="addons">
+    <h2>Available Add-Ons</h2>
+    <div class="addon-list">
+      <div class="addon-item"><span>+</span> Physical security assessment</div>
+      <div class="addon-item"><span>+</span> Cloud (AWS / Azure) configuration review</div>
+      <div class="addon-item"><span>+</span> Red team / adversary simulation exercise</div>
+      <div class="addon-item"><span>+</span> Password policy and hash analysis</div>
+      <div class="addon-item"><span>+</span> Wireless network assessment</div>
+      <div class="addon-item"><span>+</span> Compliance gap analysis (HIPAA, PCI-DSS)</div>
+      <div class="addon-item"><span>+</span> Custom threat modeling workshop</div>
+      <div class="addon-item"><span>+</span> Incident response tabletop exercise</div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Let's Scope Your Engagement</h2>
+    <p>Fill out our intake form and we'll follow up within one business day.</p>
+    <a href="intake-form.html">Request an Assessment →</a>
+  </div>
+
+  <footer>
+    <p>© 2025 CyberJed Security LLC — All Rights Reserved</p>
+  </footer>
+
+</div>
+</body>
+</html>

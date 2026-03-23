@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Methodology – CyberJed Security</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #0a0e1a;
+      color: #e0e6f0;
+    }
+    .page { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+    /* Nav */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #1e2d40;
+    }
+    nav .brand { font-size: 1.2rem; color: #00c8ff; font-weight: 700; letter-spacing: 2px; }
+    nav .links a {
+      color: #aac4d8;
+      text-decoration: none;
+      font-size: 0.82rem;
+      margin-left: 20px;
+    }
+    nav .links a:hover { color: #00c8ff; }
+    /* Hero */
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .hero h1 { font-size: 2rem; color: #00c8ff; margin-bottom: 10px; }
+    .hero p { font-size: 0.95rem; color: #8899aa; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+    /* Phase timeline */
+    .phases { display: flex; flex-direction: column; gap: 0; margin-bottom: 48px; }
+    .phase {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+    .phase-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      width: 60px;
+    }
+    .phase-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid #00c8ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #00c8ff;
+      background: #0a0e1a;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+    .phase-line {
+      width: 2px;
+      flex: 1;
+      min-height: 24px;
+      background: #1e2d40;
+      margin-top: 4px;
+    }
+    .phase:last-child .phase-line { display: none; }
+    .phase-content {
+      background: #111827;
+      border: 1px solid #1e2d40;
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    .phase-content h2 {
+      font-size: 1rem;
+      color: #00c8ff;
+      margin-bottom: 8px;
+    }
+    .phase-content p { font-size: 0.87rem; line-height: 1.7; color: #c8d8e8; margin-bottom: 10px; }
+    .phase-content ul { list-style: none; padding: 0; }
+    .phase-content ul li {
+      font-size: 0.85rem;
+      color: #aac4d8;
+      padding: 3px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+    .phase-content ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #00c8ff;
+    }
+    /* Standards */
+    .standards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 48px;
+    }
+    .std-card {
+      background: #111827;
+      border: 1px solid #1e2d40;
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+    .std-card .std-icon { font-size: 2rem; margin-bottom: 8px; }
+    .std-card h3 { font-size: 0.88rem; color: #00c8ff; margin-bottom: 4px; }
+    .std-card p { font-size: 0.78rem; color: #8899aa; line-height: 1.4; }
+    /* Ethics box */
+    .ethics {
+      background: #111827;
+      border-left: 4px solid #00c8ff;
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+    }
+    .ethics h2 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: #00c8ff; margin-bottom: 10px; }
+    .ethics p { font-size: 0.87rem; color: #c8d8e8; line-height: 1.7; }
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 32px;
+      background: #111827;
+      border: 1px solid #1e2d40;
+      border-radius: 12px;
+    }
+    .cta h2 { color: #00c8ff; margin-bottom: 10px; }
+    .cta p  { color: #8899aa; font-size: 0.9rem; margin-bottom: 20px; }
+    .cta a  {
+      display: inline-block;
+      background: #00c8ff;
+      color: #0a0e1a;
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #556677;
+      border-top: 1px solid #1e2d40;
+      padding-top: 16px;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav>
+    <span class="brand">🛡 CyberJed Security</span>
+    <div class="links">
+      <a href="capability-statement.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="intake-form.html">Get Started</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Our Testing Methodology</h1>
+    <p>
+      We follow a structured, repeatable methodology aligned with industry frameworks
+      (PTES, OWASP, NIST SP 800-115) to ensure every engagement is thorough,
+      defensible, and delivers real-world value.
+    </p>
+  </div>
+
+  <!-- Phase Timeline -->
+  <div class="phases">
+
+    <div class="phase">
+      <div class="phase-left">
+        <div class="phase-num">1</div>
+        <div class="phase-line"></div>
+      </div>
+      <div class="phase-content">
+        <h2>Pre-Engagement &amp; Scoping</h2>
+        <p>
+          Before any technical work begins, we work closely with your team to define
+          the rules of engagement, confirm authorization, and set mutual expectations.
+          This protects both parties and ensures testing doesn't disrupt critical operations.
+        </p>
+        <ul>
+          <li>Signed Statement of Work (SOW) and authorization documentation</li>
+          <li>Define in-scope and out-of-scope assets</li>
+          <li>Establish testing windows and emergency contacts</li>
+          <li>Threat-modeling session to prioritize testing focus</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-left">
+        <div class="phase-num">2</div>
+        <div class="phase-line"></div>
+      </div>
+      <div class="phase-content">
+        <h2>Reconnaissance &amp; OSINT</h2>
+        <p>
+          We gather publicly available information about your organization the same way
+          a real attacker would — without touching your systems yet.
+        </p>
+        <ul>
+          <li>Passive DNS enumeration and certificate transparency</li>
+          <li>OSINT for exposed credentials, leaked data, and employee information</li>
+          <li>Technology fingerprinting from public-facing assets</li>
+          <li>Shodan / Censys review of internet-exposed services</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-left">
+        <div class="phase-num">3</div>
+        <div class="phase-line"></div>
+      </div>
+      <div class="phase-content">
+        <h2>Scanning &amp; Enumeration</h2>
+        <p>
+          We actively probe in-scope targets to map the attack surface, identify services,
+          and discover potential entry points.
+        </p>
+        <ul>
+          <li>Port and service scanning (Nmap, Masscan)</li>
+          <li>Vulnerability scanning (authenticated and unauthenticated)</li>
+          <li>Web application crawling and directory enumeration</li>
+          <li>Active Directory enumeration (internal engagements)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-left">
+        <div class="phase-num">4</div>
+        <div class="phase-line"></div>
+      </div>
+      <div class="phase-content">
+        <h2>Exploitation &amp; Privilege Escalation</h2>
+        <p>
+          We attempt to exploit identified vulnerabilities to confirm exploitability and
+          demonstrate real-world impact. We do this carefully — no production data is
+          modified and DoS attacks are never executed.
+        </p>
+        <ul>
+          <li>Manual verification of critical and high findings</li>
+          <li>Privilege escalation attempts (local and domain)</li>
+          <li>Credential attacks (password spraying, hash cracking)</li>
+          <li>Lateral movement and persistence simulation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-left">
+        <div class="phase-num">5</div>
+        <div class="phase-line"></div>
+      </div>
+      <div class="phase-content">
+        <h2>Post-Exploitation &amp; Impact Analysis</h2>
+        <p>
+          We document what an attacker could realistically achieve from each compromised
+          position, mapping technical findings to business impact.
+        </p>
+        <ul>
+          <li>Data access assessment (what could be stolen/modified?)</li>
+          <li>Attack path mapping and chaining of vulnerabilities</li>
+          <li>Business impact narrative for executive reporting</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-left">
+        <div class="phase-num">6</div>
+        <div class="phase-line"></div>
+      </div>
+      <div class="phase-content">
+        <h2>Reporting &amp; Debrief</h2>
+        <p>
+          Every engagement concludes with a detailed written report and a live debrief call
+          with your team to walk through findings, answer questions, and align on remediation priorities.
+        </p>
+        <ul>
+          <li>Executive summary written for non-technical leadership</li>
+          <li>Technical findings with CVSS scores and step-by-step reproduction steps</li>
+          <li>Prioritized remediation roadmap</li>
+          <li>Live debrief session included at no extra cost</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-left">
+        <div class="phase-num">7</div>
+        <div class="phase-line"></div>
+      </div>
+      <div class="phase-content">
+        <h2>Remediation Verification (Optional)</h2>
+        <p>
+          Within 30 days of the final report, we offer a complimentary re-test of
+          all Critical and High findings to verify that your team's fixes are effective.
+        </p>
+        <ul>
+          <li>Targeted re-test of patched/mitigated findings</li>
+          <li>Updated report reflecting remediation status</li>
+          <li>Letter of attestation available upon request</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Standards -->
+  <h2 style="font-size:0.85rem;text-transform:uppercase;letter-spacing:3px;color:#00c8ff;border-left:4px solid #00c8ff;padding-left:10px;margin-bottom:20px;">
+    Framework Alignment
+  </h2>
+  <div class="standards">
+    <div class="std-card">
+      <div class="std-icon">📘</div>
+      <h3>PTES</h3>
+      <p>Penetration Testing Execution Standard — our primary testing lifecycle guide.</p>
+    </div>
+    <div class="std-card">
+      <div class="std-icon">🔴</div>
+      <h3>OWASP Top 10</h3>
+      <p>Web application testing aligned with the OWASP Testing Guide (v4.2).</p>
+    </div>
+    <div class="std-card">
+      <div class="std-icon">🏛</div>
+      <h3>NIST SP 800-115</h3>
+      <p>NIST Technical Guide to Information Security Testing and Assessment.</p>
+    </div>
+    <div class="std-card">
+      <div class="std-icon">🛡</div>
+      <h3>MITRE ATT&amp;CK</h3>
+      <p>Tactics, techniques, and procedures mapped to the ATT&amp;CK Enterprise framework.</p>
+    </div>
+  </div>
+
+  <!-- Ethics -->
+  <div class="ethics">
+    <h2>Our Ethical Commitment</h2>
+    <p>
+      All testing is performed under explicit written authorization. We never access systems
+      outside agreed scope, we never retain client data beyond the engagement period,
+      and we never disclose client information to third parties without consent.
+      Every assessor signs a confidentiality agreement before beginning work.
+    </p>
+  </div>
+
+  <div class="cta">
+    <h2>Ready to Start?</h2>
+    <p>Complete our intake form to schedule a scoping call — no commitment required.</p>
+    <a href="intake-form.html">Request an Assessment →</a>
+  </div>
+
+  <footer>
+    <p>© 2025 CyberJed Security LLC — All Rights Reserved</p>
+  </footer>
+
+</div>
+</body>
+</html>

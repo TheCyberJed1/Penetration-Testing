@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Studies – CyberJed Security</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0e1a; color: #e0e6f0; }
+    .page { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 40px; padding-bottom: 16px; border-bottom: 1px solid #1e2d40;
+    }
+    nav .brand { font-size: 1.2rem; color: #00c8ff; font-weight: 700; letter-spacing: 2px; }
+    nav .links a { color: #aac4d8; text-decoration: none; font-size: 0.82rem; margin-left: 20px; }
+    nav .links a:hover { color: #00c8ff; }
+    .hero { text-align: center; margin-bottom: 48px; }
+    .hero h1 { font-size: 2rem; color: #00c8ff; margin-bottom: 10px; }
+    .hero p { font-size: 0.95rem; color: #8899aa; max-width: 620px; margin: 0 auto; line-height: 1.7; }
+    /* Label badge */
+    .label-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    .label-lab      { background: #001e33; color: #00c8ff; border: 1px solid #00c8ff; }
+    .label-volunteer { background: #1e1500; color: #ffcc00; border: 1px solid #ffcc00; }
+    /* Case study card */
+    .case-study {
+      background: #111827;
+      border: 1px solid #1e2d40;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 36px;
+    }
+    .cs-header {
+      background: #0d1520;
+      padding: 24px 28px;
+      border-bottom: 1px solid #1e2d40;
+    }
+    .cs-header h2 { font-size: 1.1rem; color: #e0e6f0; margin-bottom: 6px; }
+    .cs-header .cs-meta { font-size: 0.8rem; color: #8899aa; }
+    .cs-body { padding: 24px 28px; }
+    /* Stats row */
+    .cs-stats {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .cs-stat {
+      background: #0d1520;
+      border: 1px solid #1e2d40;
+      border-radius: 6px;
+      padding: 12px 16px;
+      text-align: center;
+      flex: 1;
+      min-width: 100px;
+    }
+    .cs-stat .num { font-size: 1.4rem; font-weight: 700; color: #00c8ff; }
+    .cs-stat .lbl { font-size: 0.72rem; color: #8899aa; margin-top: 3px; }
+    /* Sections */
+    .cs-section { margin-bottom: 18px; }
+    .cs-section h3 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #00c8ff;
+      margin-bottom: 8px;
+    }
+    .cs-section p  { font-size: 0.87rem; color: #c8d8e8; line-height: 1.7; }
+    .cs-section ul { list-style: none; padding: 0; }
+    .cs-section ul li {
+      font-size: 0.85rem;
+      color: #aac4d8;
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+    .cs-section ul li::before { content: "→"; position: absolute; left: 0; color: #00c8ff; }
+    /* Finding tags */
+    .finding-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .ftag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .ftag.critical { background: #3a0010; color: #ff2244; }
+    .ftag.high     { background: #2e1600; color: #ff7700; }
+    .ftag.medium   { background: #2e2500; color: #ffcc00; }
+    .ftag.low      { background: #002510; color: #44cc88; }
+    /* Takeaway box */
+    .takeaway {
+      background: #0d1520;
+      border-left: 4px solid #00c8ff;
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      font-size: 0.85rem;
+      color: #aac4d8;
+      line-height: 1.6;
+      margin-top: 12px;
+    }
+    .takeaway strong { color: #00c8ff; }
+    /* Disclaimer */
+    .disclaimer {
+      background: #111827;
+      border: 1px solid #1e2d40;
+      border-left: 4px solid #8899aa;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      font-size: 0.82rem;
+      color: #8899aa;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    /* CTA */
+    .cta { text-align: center; padding: 32px; background: #111827; border: 1px solid #1e2d40; border-radius: 12px; }
+    .cta h2 { color: #00c8ff; margin-bottom: 10px; }
+    .cta p  { color: #8899aa; font-size: 0.9rem; margin-bottom: 20px; }
+    .cta a  { display: inline-block; background: #00c8ff; color: #0a0e1a; padding: 12px 28px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 0.9rem; }
+    footer { margin-top: 40px; text-align: center; font-size: 0.78rem; color: #556677; border-top: 1px solid #1e2d40; padding-top: 16px; }
+    @media(max-width:600px){ .cs-stats { flex-direction: column; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav>
+    <span class="brand">🛡 CyberJed Security</span>
+    <div class="links">
+      <a href="capability-statement.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="intake-form.html">Get Started</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Case Studies</h1>
+    <p>
+      Real-world assessments — clearly labeled by context. Lab environments and volunteer
+      engagements are identified as such. These case studies demonstrate methodology,
+      thinking, and the types of findings we uncover.
+    </p>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Transparency Notice:</strong> The following case studies include engagements conducted in
+    controlled lab environments (TryHackMe, Hack The Box, home lab) and volunteer/pro-bono assessments.
+    These are clearly labeled. No client confidentiality has been violated. Lab-based case studies
+    reflect real offensive security skills demonstrated in intentionally vulnerable environments designed
+    for practice and professional development.
+  </div>
+
+  <!-- ========== CASE STUDY 1 ========== -->
+  <div class="case-study">
+    <div class="cs-header">
+      <span class="label-badge label-lab">🧪 Lab Environment — Home Lab / Hack The Box</span>
+      <h2>Case Study 1: Full Active Directory Compromise from Unauthenticated Network Access</h2>
+      <p class="cs-meta">Environment: Home lab (Windows Server 2019 + Win10 workstations) · Duration: 3 days · Tester: CyberJed Security</p>
+    </div>
+    <div class="cs-body">
+      <div class="cs-stats">
+        <div class="cs-stat"><div class="num">3</div><div class="lbl">Attack Phases</div></div>
+        <div class="cs-stat"><div class="num">5</div><div class="lbl">Hosts Compromised</div></div>
+        <div class="cs-stat"><div class="num">1</div><div class="lbl">Domain Admin Achieved</div></div>
+        <div class="cs-stat"><div class="num">8</div><div class="lbl">Findings Documented</div></div>
+      </div>
+
+      <div class="cs-section">
+        <h3>Scenario</h3>
+        <p>
+          Simulated an external attacker who gained initial access to an internal network segment
+          (representing a phished employee's laptop on a corporate LAN). Starting from zero domain
+          credentials, the goal was to achieve Domain Admin.
+        </p>
+      </div>
+
+      <div class="cs-section">
+        <h3>Attack Path Summary</h3>
+        <ul>
+          <li>Ran Responder to capture NTLMv2 hashes on the network segment</li>
+          <li>Cracked captured hash offline using Hashcat with rockyou.txt wordlist in under 4 minutes</li>
+          <li>Authenticated to SMB share with recovered credentials — found cleartext password in a config file</li>
+          <li>Used BloodHound to identify a Kerberoastable service account with a path to Domain Admins</li>
+          <li>Kerberoasted the service account; cracked the TGS ticket offline</li>
+          <li>Leveraged compromised service account privileges to DCSync and dump all domain hashes</li>
+        </ul>
+      </div>
+
+      <div class="cs-section">
+        <h3>Key Findings</h3>
+        <div class="finding-tags">
+          <span class="ftag critical">NTLM Hash Capture via Responder</span>
+          <span class="ftag high">Weak Password Policy (8-char, no complexity)</span>
+          <span class="ftag high">Kerberoastable Service Account with DA Path</span>
+          <span class="ftag medium">Cleartext Credentials in Network Share</span>
+          <span class="ftag medium">Excessive SMB Share Permissions</span>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h3>Remediation Recommendations Documented</h3>
+        <ul>
+          <li>Enable SMB signing on all domain controllers and workstations</li>
+          <li>Enforce minimum 15-character passwords with complexity requirements</li>
+          <li>Audit and rotate service account passwords; implement Managed Service Accounts (gMSA)</li>
+          <li>Remove cleartext credentials from shared drives; audit share permissions quarterly</li>
+          <li>Implement tiered Active Directory administration model</li>
+        </ul>
+      </div>
+
+      <div class="takeaway">
+        <strong>Key Takeaway:</strong> A single weak password on a domain-joined workstation was the initial
+        foothold that led to full domain compromise. Most AD environments have similar exposure —
+        this attack chain is well-documented in the wild and actively exploited by ransomware groups.
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== CASE STUDY 2 ========== -->
+  <div class="case-study">
+    <div class="cs-header">
+      <span class="label-badge label-volunteer">🤝 Volunteer / Pro-Bono Engagement</span>
+      <h2>Case Study 2: Web Application Assessment for a Local Nonprofit Organization</h2>
+      <p class="cs-meta">Environment: Volunteer engagement with written authorization · Duration: 5 days · Tester: CyberJed Security</p>
+    </div>
+    <div class="cs-body">
+      <div class="cs-stats">
+        <div class="cs-stat"><div class="num">1</div><div class="lbl">Web App Tested</div></div>
+        <div class="cs-stat"><div class="num">9</div><div class="lbl">Total Findings</div></div>
+        <div class="cs-stat"><div class="num">2</div><div class="lbl">High Severity</div></div>
+        <div class="cs-stat"><div class="num">48 hrs</div><div class="lbl">Report Turnaround</div></div>
+      </div>
+
+      <div class="cs-section">
+        <h3>Scenario</h3>
+        <p>
+          A small nonprofit organization with a WordPress-based donation and member management portal
+          requested a pro-bono web application security assessment. The site handled donor PII and
+          processed payments through a third-party gateway. Testing was conducted under a signed
+          authorization agreement during off-peak hours.
+        </p>
+      </div>
+
+      <div class="cs-section">
+        <h3>Testing Approach</h3>
+        <ul>
+          <li>Authenticated and unauthenticated testing of the WordPress application</li>
+          <li>Enumeration of plugins, themes, and WordPress version using WPScan</li>
+          <li>Manual OWASP Top 10 testing via Burp Suite Pro</li>
+          <li>Review of HTTP security headers and SSL/TLS configuration</li>
+          <li>File upload functionality and user privilege separation testing</li>
+        </ul>
+      </div>
+
+      <div class="cs-section">
+        <h3>Key Findings</h3>
+        <div class="finding-tags">
+          <span class="ftag high">Outdated Plugin with Known CSRF Vulnerability</span>
+          <span class="ftag high">User Enumeration via Login Error Messages</span>
+          <span class="ftag medium">Missing Security Headers (CSP, HSTS, X-Frame-Options)</span>
+          <span class="ftag medium">Weak Admin Password Policy</span>
+          <span class="ftag medium">Directory Listing Enabled on /uploads/</span>
+          <span class="ftag low">TLS 1.0 Enabled on Subdomain</span>
+          <span class="ftag low">WordPress Version Disclosure</span>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h3>Outcomes</h3>
+        <ul>
+          <li>Delivered a full written report with executive summary and technical findings within 48 hours</li>
+          <li>Conducted a 1-hour debrief with the organization's volunteer IT coordinator</li>
+          <li>All Critical and High findings remediated by the client within 2 weeks</li>
+          <li>Performed complimentary re-test confirming successful remediation</li>
+        </ul>
+      </div>
+
+      <div class="takeaway">
+        <strong>Key Takeaway:</strong> A single unpatched WordPress plugin with a known CSRF vulnerability
+        could have allowed an attacker to take over admin accounts, redirect donations, or exfiltrate
+        donor PII. Nonprofits often lack dedicated security resources — even a basic annual assessment
+        can close critical exposure gaps.
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== CASE STUDY 3 ========== -->
+  <div class="case-study">
+    <div class="cs-header">
+      <span class="label-badge label-lab">🧪 Lab Environment — TryHackMe / Custom Range</span>
+      <h2>Case Study 3: External Phishing Simulation &amp; Initial Access Chain</h2>
+      <p class="cs-meta">Environment: Controlled lab network (GoPhish + intentionally vulnerable target) · Duration: 2 days</p>
+    </div>
+    <div class="cs-body">
+      <div class="cs-stats">
+        <div class="cs-stat"><div class="num">1</div><div class="lbl">Phishing Campaign</div></div>
+        <div class="cs-stat"><div class="num">15</div><div class="lbl">Simulated Targets</div></div>
+        <div class="cs-stat"><div class="num">73%</div><div class="lbl">Click Rate (Lab)</div></div>
+        <div class="cs-stat"><div class="num">3</div><div class="lbl">Post-Phish Stages</div></div>
+      </div>
+
+      <div class="cs-section">
+        <h3>Scenario</h3>
+        <p>
+          In a controlled lab environment, simulated a full social engineering attack chain:
+          spear-phishing email → credential harvest → post-authentication access → lateral movement.
+          The purpose was to practice the full attack lifecycle and develop a reusable phishing
+          simulation methodology for future client engagements.
+        </p>
+      </div>
+
+      <div class="cs-section">
+        <h3>Attack Chain</h3>
+        <ul>
+          <li>Performed OSINT on simulated "employee" profiles to craft believable lure emails</li>
+          <li>Stood up GoPhish infrastructure with a lookalike domain (registered and decommissioned within lab)</li>
+          <li>Crafted spear-phishing email mimicking an internal IT password reset request</li>
+          <li>73% of simulated recipients clicked the link; 40% submitted credentials on the cloned portal</li>
+          <li>Used harvested credentials to authenticate to simulated VPN portal</li>
+          <li>From simulated VPN access, performed internal enumeration and identified next-hop targets</li>
+        </ul>
+      </div>
+
+      <div class="cs-section">
+        <h3>Key Observations &amp; Lessons Documented</h3>
+        <ul>
+          <li>Urgency and authority cues in email subjects dramatically increased click rates</li>
+          <li>MFA would have broken the attack chain at credential harvesting stage</li>
+          <li>Lookalike domains that closely mirror internal naming conventions are highly convincing</li>
+          <li>Security awareness training that includes recognizing urgency tactics is most impactful</li>
+        </ul>
+      </div>
+
+      <div class="cs-section">
+        <h3>Methodology Output</h3>
+        <p>
+          This exercise produced a documented phishing simulation playbook now used as the foundation
+          for CyberJed Security's social engineering engagement methodology, including pre-campaign
+          OSINT, lure construction guidelines, infrastructure setup procedures, and post-campaign
+          reporting templates.
+        </p>
+      </div>
+
+      <div class="takeaway">
+        <strong>Key Takeaway:</strong> Phishing remains the #1 initial access vector in real-world breaches.
+        Even technically sophisticated organizations with patched systems are vulnerable when the human
+        element is not regularly tested and trained. MFA enrollment alone would have neutralized the
+        post-phish access in this chain.
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Ready to Find Your Real Exposures?</h2>
+    <p>Let's scope an engagement tailored to your environment and risk profile.</p>
+    <a href="intake-form.html">Request an Assessment →</a>
+  </div>
+
+  <footer>
+    <p>© 2025 CyberJed Security LLC — All Rights Reserved</p>
+  </footer>
+
+</div>
+</body>
+</html>

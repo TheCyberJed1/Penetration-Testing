@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinkedIn Profile – CyberJed Security</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0e1a; color: #e0e6f0; }
+    .page { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 40px; padding-bottom: 16px; border-bottom: 1px solid #1e2d40;
+    }
+    nav .brand { font-size: 1.2rem; color: #00c8ff; font-weight: 700; letter-spacing: 2px; }
+    nav .links a { color: #aac4d8; text-decoration: none; font-size: 0.82rem; margin-left: 20px; }
+    nav .links a:hover { color: #00c8ff; }
+    /* Page title */
+    .page-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .page-title h1 { font-size: 1.8rem; color: #00c8ff; margin-bottom: 8px; }
+    .page-title p { font-size: 0.9rem; color: #8899aa; line-height: 1.6; }
+    /* Tab bar */
+    .tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 32px;
+      border-bottom: 2px solid #1e2d40;
+    }
+    .tab {
+      padding: 10px 24px;
+      font-size: 0.88rem;
+      color: #8899aa;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+    }
+    .tab.active { color: #00c8ff; border-color: #00c8ff; }
+    /* Profile card */
+    .profile-card {
+      background: #111827;
+      border: 1px solid #1e2d40;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .profile-banner {
+      height: 100px;
+      background: linear-gradient(135deg, #002244, #001133, #00344a);
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 12px;
+    }
+    .profile-banner .banner-text {
+      font-size: 0.7rem;
+      color: #334455;
+      letter-spacing: 2px;
+    }
+    .profile-main {
+      padding: 0 24px 24px;
+    }
+    .avatar-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      margin-top: -32px;
+      margin-bottom: 14px;
+    }
+    .avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #003366, #006699);
+      border: 3px solid #111827;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+    .avatar.company-avatar {
+      border-radius: 10px;
+      font-size: 1.6rem;
+    }
+    .profile-name h2 { font-size: 1.2rem; color: #e0e6f0; }
+    .profile-name .headline { font-size: 0.85rem; color: #8899aa; margin-top: 3px; }
+    .profile-name .location { font-size: 0.78rem; color: #556677; margin-top: 3px; }
+    .connect-btn {
+      display: inline-block;
+      background: #00c8ff;
+      color: #0a0e1a;
+      padding: 7px 18px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      margin-left: auto;
+    }
+    /* Sections */
+    .li-section {
+      border-top: 1px solid #1e2d40;
+      padding: 18px 24px;
+    }
+    .li-section h3 {
+      font-size: 0.85rem;
+      color: #00c8ff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .li-section p { font-size: 0.87rem; color: #c8d8e8; line-height: 1.7; }
+    /* Experience items */
+    .exp-item { display: flex; gap: 14px; margin-bottom: 16px; }
+    .exp-logo {
+      width: 40px; height: 40px;
+      background: #0d1520;
+      border: 1px solid #1e2d40;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .exp-detail h4 { font-size: 0.88rem; color: #e0e6f0; margin-bottom: 2px; }
+    .exp-detail .exp-meta { font-size: 0.78rem; color: #8899aa; margin-bottom: 4px; }
+    .exp-detail p { font-size: 0.82rem; color: #aac4d8; line-height: 1.6; }
+    /* Skills */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .skill-tag {
+      background: #0d1520;
+      border: 1px solid #1e2d40;
+      color: #aac4d8;
+      font-size: 0.78rem;
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+    /* Certifications */
+    .cert-list { list-style: none; }
+    .cert-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: #c8d8e8;
+      padding: 7px 0;
+      border-bottom: 1px solid #1a2535;
+    }
+    .cert-list li:last-child { border: none; }
+    .cert-list li .cert-icon { font-size: 1.2rem; }
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    footer { margin-top: 40px; text-align: center; font-size: 0.78rem; color: #556677; border-top: 1px solid #1e2d40; padding-top: 16px; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav>
+    <span class="brand">🛡 CyberJed Security</span>
+    <div class="links">
+      <a href="capability-statement.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="intake-form.html">Get Started</a>
+    </div>
+  </nav>
+
+  <div class="page-title">
+    <h1>LinkedIn Profiles</h1>
+    <p>
+      Professional profiles for both the individual practitioner and the company.<br />
+      Use these as copy-ready content for your actual LinkedIn pages.
+    </p>
+  </div>
+
+  <!-- Tab bar -->
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('personal')">👤 Individual Profile</div>
+    <div class="tab" onclick="switchTab('company')">🏢 Company Page</div>
+  </div>
+
+  <!-- === PERSONAL PROFILE === -->
+  <div id="panel-personal" class="tab-panel active">
+    <div class="profile-card">
+      <div class="profile-banner">
+        <span class="banner-text">OFFENSIVE SECURITY · PENETRATION TESTING</span>
+      </div>
+      <div class="profile-main">
+        <div class="avatar-row">
+          <div class="avatar">🧑‍💻</div>
+          <div class="profile-name">
+            <h2>[Your Full Name]</h2>
+            <p class="headline">Penetration Tester | Offensive Security Practitioner | Founder @ CyberJed Security LLC</p>
+            <p class="location">📍 [City, State] · Open to Remote Engagements</p>
+          </div>
+          <a href="intake-form.html" class="connect-btn">Connect</a>
+        </div>
+
+        <div class="li-section">
+          <h3>About</h3>
+          <p>
+            I'm a cybersecurity practitioner with a focus on offensive security — I simulate real-world attacks
+            against networks, web applications, and the human element to help organizations find and fix
+            vulnerabilities before malicious actors do.
+          </p>
+          <p style="margin-top:10px;">
+            As the founder of CyberJed Security LLC, I bring a hands-on, attacker's mindset to every engagement.
+            My background includes network penetration testing, web application assessments (OWASP Top 10),
+            Active Directory attack path analysis, and social engineering simulations.
+          </p>
+          <p style="margin-top:10px;">
+            I believe security findings should tell a story — not just produce a CVSS score. Every report I deliver
+            includes a business-context narrative alongside technical details, because remediating vulnerabilities
+            requires both technical and organizational buy-in.
+          </p>
+          <p style="margin-top:10px;">
+            🔒 Active practitioner on TryHackMe and Hack The Box<br />
+            🎯 OSCP preparation — active<br />
+            🤝 Available for penetration testing, vulnerability assessments, and security awareness training
+          </p>
+        </div>
+
+        <div class="li-section">
+          <h3>Experience</h3>
+          <div class="exp-item">
+            <div class="exp-logo">🛡</div>
+            <div class="exp-detail">
+              <h4>Founder &amp; Lead Penetration Tester — CyberJed Security LLC</h4>
+              <p class="exp-meta">Self-Employed · [Start Year] – Present · [City, State] · Full-time</p>
+              <p>
+                Deliver external network, internal network, web application, and social engineering assessments
+                for small and mid-size organizations. Produce executive-grade reports with prioritized remediation
+                roadmaps. Manage all scoping, rules of engagement, testing, and client communication.
+              </p>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-logo">💼</div>
+            <div class="exp-detail">
+              <h4>[Previous Role] — [Previous Organization]</h4>
+              <p class="exp-meta">[Employment Type] · [Date Range] · [Location]</p>
+              <p>
+                [Describe relevant responsibilities — system administration, IT support, networking, security
+                monitoring, helpdesk, or any role that built foundational skills. Highlight anything transferable
+                to offensive security.]
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="li-section">
+          <h3>Certifications &amp; Credentials</h3>
+          <ul class="cert-list">
+            <li><span class="cert-icon">🏅</span> CompTIA Security+ — CompTIA</li>
+            <li><span class="cert-icon">🎯</span> Certified Ethical Hacker (CEH) — EC-Council (In Progress)</li>
+            <li><span class="cert-icon">💻</span> OSCP — Offensive Security (In Preparation)</li>
+            <li><span class="cert-icon">🔥</span> TryHackMe — Top X% · [Current Rank]</li>
+            <li><span class="cert-icon">📦</span> Hack The Box — Active Practitioner</li>
+          </ul>
+        </div>
+
+        <div class="li-section">
+          <h3>Skills</h3>
+          <div class="skills-grid">
+            <span class="skill-tag">Penetration Testing</span>
+            <span class="skill-tag">Network Security</span>
+            <span class="skill-tag">Web App Security</span>
+            <span class="skill-tag">Active Directory</span>
+            <span class="skill-tag">OWASP Top 10</span>
+            <span class="skill-tag">Kali Linux</span>
+            <span class="skill-tag">Metasploit</span>
+            <span class="skill-tag">Burp Suite</span>
+            <span class="skill-tag">Nmap</span>
+            <span class="skill-tag">Nessus</span>
+            <span class="skill-tag">BloodHound</span>
+            <span class="skill-tag">Social Engineering</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Bash Scripting</span>
+            <span class="skill-tag">MITRE ATT&amp;CK</span>
+            <span class="skill-tag">PTES</span>
+            <span class="skill-tag">Vulnerability Assessment</span>
+            <span class="skill-tag">Security Report Writing</span>
+            <span class="skill-tag">Client Communication</span>
+          </div>
+        </div>
+
+        <div class="li-section">
+          <h3>Featured Post / Bio Summary</h3>
+          <p style="font-style:italic;color:#aac4d8;">
+            "I started CyberJed Security because I believe every organization — regardless of size —
+            deserves access to professional offensive security services that speak both technical
+            and business language. If you're curious about where your real exposures are,
+            let's talk. The first conversation is always free."
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- === COMPANY PAGE === -->
+  <div id="panel-company" class="tab-panel">
+    <div class="profile-card">
+      <div class="profile-banner">
+        <span class="banner-text">CYBERJED SECURITY LLC · OFFENSIVE SECURITY SERVICES</span>
+      </div>
+      <div class="profile-main">
+        <div class="avatar-row">
+          <div class="avatar company-avatar">🛡</div>
+          <div class="profile-name">
+            <h2>CyberJed Security LLC</h2>
+            <p class="headline">Penetration Testing · Vulnerability Assessment · Security Awareness Training</p>
+            <p class="location">📍 [City, State] · Serving clients nationwide · Remote-friendly</p>
+          </div>
+          <a href="intake-form.html" class="connect-btn">Follow</a>
+        </div>
+
+        <div class="li-section">
+          <h3>About</h3>
+          <p>
+            CyberJed Security LLC is a veteran-owned offensive security firm specializing in
+            penetration testing, vulnerability assessments, and security awareness training for
+            small and mid-size organizations.
+          </p>
+          <p style="margin-top:10px;">
+            We help organizations in healthcare, financial services, legal, technology, and nonprofit
+            sectors identify and remediate security vulnerabilities before adversaries can exploit them.
+            Our engagements are structured, scoped, and delivered with the dual audience in mind —
+            plain-language executive summaries for leadership and technical detail for your security
+            and IT teams.
+          </p>
+          <p style="margin-top:10px;">
+            ✅ Written authorization required for every engagement<br />
+            ✅ Flat-rate pricing on standard assessments<br />
+            ✅ Complimentary re-test of Critical/High findings within 30 days<br />
+            ✅ Engagements can begin within 5 business days<br />
+            ✅ Cyber liability and professional liability insurance maintained
+          </p>
+        </div>
+
+        <div class="li-section">
+          <h3>Services</h3>
+          <div class="skills-grid">
+            <span class="skill-tag">External Network Pentest</span>
+            <span class="skill-tag">Internal Network Pentest</span>
+            <span class="skill-tag">Web Application Testing</span>
+            <span class="skill-tag">API Security Testing</span>
+            <span class="skill-tag">Social Engineering</span>
+            <span class="skill-tag">Active Directory Audit</span>
+            <span class="skill-tag">Phishing Simulation</span>
+            <span class="skill-tag">Cloud Security Review</span>
+            <span class="skill-tag">Vulnerability Assessment</span>
+            <span class="skill-tag">Security Awareness Training</span>
+          </div>
+        </div>
+
+        <div class="li-section">
+          <h3>Company Details</h3>
+          <ul class="cert-list">
+            <li><span class="cert-icon">🏢</span> Company size: 1–10 employees</li>
+            <li><span class="cert-icon">📅</span> Founded: [Year]</li>
+            <li><span class="cert-icon">🏛</span> Type: Privately Held · LLC</li>
+            <li><span class="cert-icon">🌐</span> Industry: Computer &amp; Network Security</li>
+            <li><span class="cert-icon">📍</span> Headquarters: [City, State]</li>
+            <li><span class="cert-icon">🔗</span> Website: <a href="#" style="color:#00c8ff;">cyberjed.io</a></li>
+          </ul>
+        </div>
+
+        <div class="li-section">
+          <h3>Specialties</h3>
+          <p style="font-size:0.84rem;color:#8899aa;">
+            Penetration Testing, Ethical Hacking, Vulnerability Assessment, Web Application Security,
+            Social Engineering Assessments, Network Security, Active Directory Audits,
+            Security Awareness Training, Offensive Security, OSCP-style Methodology,
+            Business-Focused Security Reporting
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 CyberJed Security LLC — All Rights Reserved</p>
+  </footer>
+
+</div>
+
+<script>
+  function switchTab(tab) {
+    document.querySelectorAll('.tab').forEach(function(t, i) {
+      t.classList.toggle('active', (i === 0 && tab === 'personal') || (i === 1 && tab === 'company'));
+    });
+    document.getElementById('panel-personal').classList.toggle('active', tab === 'personal');
+    document.getElementById('panel-company').classList.toggle('active', tab === 'company');
+  }
+</script>
+</body>
+</html>

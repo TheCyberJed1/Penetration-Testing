@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insurance &amp; Credentials – CyberJed Security</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0e1a; color: #e0e6f0; }
+    .page { max-width: 860px; margin: 0 auto; padding: 40px 24px; }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 40px; padding-bottom: 16px; border-bottom: 1px solid #1e2d40;
+    }
+    nav .brand { font-size: 1.2rem; color: #00c8ff; font-weight: 700; letter-spacing: 2px; }
+    nav .links a { color: #aac4d8; text-decoration: none; font-size: 0.82rem; margin-left: 20px; }
+    nav .links a:hover { color: #00c8ff; }
+    .hero { text-align: center; margin-bottom: 48px; }
+    .hero h1 { font-size: 2rem; color: #00c8ff; margin-bottom: 10px; }
+    .hero p { font-size: 0.95rem; color: #8899aa; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+    h2.section {
+      font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px;
+      color: #00c8ff; border-left: 4px solid #00c8ff; padding-left: 10px;
+      margin: 36px 0 16px;
+    }
+    /* Coverage cards */
+    .coverage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+    .coverage-card {
+      background: #111827;
+      border: 1px solid #1e2d40;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .coverage-card .cov-icon { font-size: 1.8rem; margin-bottom: 10px; }
+    .coverage-card h3 { font-size: 0.9rem; color: #00c8ff; margin-bottom: 6px; }
+    .coverage-card p  { font-size: 0.82rem; color: #c8d8e8; line-height: 1.5; margin-bottom: 8px; }
+    .coverage-card .limit {
+      display: inline-block;
+      background: #0d1520;
+      border: 1px solid #1e2d40;
+      color: #44cc88;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+    /* Notice */
+    .notice {
+      background: #111827;
+      border: 1px solid #1e2d40;
+      border-left: 4px solid #ffcc00;
+      border-radius: 0 8px 8px 0;
+      padding: 18px 22px;
+      margin-bottom: 36px;
+      font-size: 0.85rem;
+      color: #c8d8e8;
+      line-height: 1.6;
+    }
+    .notice strong { color: #ffcc00; }
+    /* Info table */
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 36px;
+    }
+    .info-table th, .info-table td {
+      border: 1px solid #1e2d40;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+    .info-table th { background: #1e2d40; color: #00c8ff; font-weight: 600; }
+    .info-table tr:nth-child(even) { background: #111827; }
+    .redacted { background: #333; color: #333; border-radius: 3px; user-select: none; }
+    /* COI request box */
+    .coi-box {
+      background: #111827;
+      border: 1px solid #1e2d40;
+      border-radius: 10px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .coi-box h2 { color: #00c8ff; font-size: 1.1rem; margin-bottom: 8px; }
+    .coi-box p  { font-size: 0.87rem; color: #8899aa; margin-bottom: 16px; line-height: 1.6; }
+    .coi-box a  {
+      display: inline-block;
+      background: #00c8ff;
+      color: #0a0e1a;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.87rem;
+    }
+    footer { margin-top: 40px; text-align: center; font-size: 0.78rem; color: #556677; border-top: 1px solid #1e2d40; padding-top: 16px; }
+    @media(max-width:600px){ .coverage-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav>
+    <span class="brand">🛡 CyberJed Security</span>
+    <div class="links">
+      <a href="capability-statement.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="intake-form.html">Get Started</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Insurance &amp; Business Credentials</h1>
+    <p>
+      We understand that handing a security firm access to your systems requires trust.
+      Below is an overview of our insurance coverage, licensing, and business credentials.
+      Certificates of Insurance (COI) are available upon request.
+    </p>
+  </div>
+
+  <div class="notice">
+    <strong>⚠ Note:</strong> Policy numbers, carrier details, and agent contact information are
+    available in full upon execution of a signed Non-Disclosure Agreement (NDA) or
+    Statement of Work (SOW). Sensitive insurance details are withheld here for security purposes.
+    We are happy to provide a full Certificate of Insurance (COI) to any prospective client
+    prior to beginning an engagement.
+  </div>
+
+  <h2 class="section">Insurance Coverage Summary</h2>
+  <div class="coverage-grid">
+
+    <div class="coverage-card">
+      <div class="cov-icon">🔐</div>
+      <h3>Cyber Liability Insurance</h3>
+      <p>
+        Covers third-party claims arising from data breaches, privacy violations,
+        or cyber incidents in connection with our services.
+      </p>
+      <span class="limit">Coverage: $1,000,000 per occurrence</span>
+    </div>
+
+    <div class="coverage-card">
+      <div class="cov-icon">💼</div>
+      <h3>Professional Liability (E&amp;O)</h3>
+      <p>
+        Errors &amp; Omissions coverage protecting clients against claims of
+        negligent acts, errors, or omissions in the delivery of our professional services.
+      </p>
+      <span class="limit">Coverage: $1,000,000 per occurrence</span>
+    </div>
+
+    <div class="coverage-card">
+      <div class="cov-icon">🏢</div>
+      <h3>General Liability</h3>
+      <p>
+        Commercial General Liability (CGL) covering bodily injury and property
+        damage claims arising from our business operations.
+      </p>
+      <span class="limit">Coverage: $1,000,000 per occurrence</span>
+    </div>
+
+    <div class="coverage-card">
+      <div class="cov-icon">📋</div>
+      <h3>Business Owner's Policy (BOP)</h3>
+      <p>
+        Bundled coverage including general liability and commercial property
+        for our business assets and operations.
+      </p>
+      <span class="limit">Coverage: Included in BOP</span>
+    </div>
+
+  </div>
+
+  <h2 class="section">Business Information</h2>
+  <table class="info-table">
+    <tr><th>Field</th><th>Detail</th></tr>
+    <tr><td>Company Name</td><td>CyberJed Security LLC</td></tr>
+    <tr><td>Business Type</td><td>Limited Liability Company (LLC)</td></tr>
+    <tr><td>State of Formation</td><td><span class="redacted">████████</span></td></tr>
+    <tr><td>EIN / Tax ID</td><td><span class="redacted">XX-XXXXXXX</span> (provided on W-9 upon request)</td></tr>
+    <tr><td>DUNS / SAM Registration</td><td>In progress</td></tr>
+    <tr><td>CAGE Code</td><td>In progress</td></tr>
+    <tr><td>Insurance Carrier</td><td><span class="redacted">████████████ Insurance Group</span></td></tr>
+    <tr><td>Policy Renewal Date</td><td>Annual — <span class="redacted">██/██/2026</span></td></tr>
+  </table>
+
+  <h2 class="section">Background &amp; Vetting</h2>
+  <table class="info-table">
+    <tr><th>Item</th><th>Status</th></tr>
+    <tr><td>Criminal Background Check</td><td>✅ Completed — Clean</td></tr>
+    <tr><td>Non-Disclosure Agreement (NDA) Available</td><td>✅ Yes — provided before scoping</td></tr>
+    <tr><td>Rules of Engagement Template</td><td>✅ Provided with all engagements</td></tr>
+    <tr><td>Conflict of Interest Policy</td><td>✅ Active</td></tr>
+    <tr><td>Data Handling &amp; Retention Policy</td><td>✅ Client data deleted within 30 days post-engagement</td></tr>
+  </table>
+
+  <div class="coi-box">
+    <h2>Request a Certificate of Insurance</h2>
+    <p>
+      Need to verify coverage before signing a contract? We can provide a Certificate of Insurance
+      (COI) naming your organization as an additional insured upon request.
+      Turnaround is typically same business day.
+    </p>
+    <a href="intake-form.html">Request COI →</a>
+  </div>
+
+  <footer>
+    <p>© 2025 CyberJed Security LLC — All Rights Reserved</p>
+  </footer>
+
+</div>
+</body>
+</html>
